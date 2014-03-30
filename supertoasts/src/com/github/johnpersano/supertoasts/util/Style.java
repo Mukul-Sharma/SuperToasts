@@ -20,284 +20,314 @@ package com.github.johnpersano.supertoasts.util;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
+
 import com.github.johnpersano.supertoasts.R;
 import com.github.johnpersano.supertoasts.SuperToast;
 
-/** Creates a reference to basic style options so that all types of SuperToasts
- *  will be themed the same way in a particular class. */
+/**
+ * Creates a reference to basic style options so that all types of SuperToasts
+ * will be themed the same way in a particular class.
+ */
 @SuppressWarnings("UnusedDeclaration")
 public class Style {
 
-    public static final int BLACK = 0;
-    public static final int BLUE = 1;
-    public static final int GRAY = 2;
-    public static final int GREEN = 3;
-    public static final int ORANGE = 4;
-    public static final int PURPLE = 5;
-    public static final int RED = 6;
-    public static final int WHITE = 7;
-
-    public SuperToast.Animations animations = SuperToast.Animations.FADE;
-    public int background = getBackground(GRAY);
-    public int typefaceStyle = Typeface.NORMAL;
-    public int textColor = Color.WHITE;
-    public int dividerColor = Color.WHITE;
-    public int buttonTextColor = Color.LTGRAY;
+	public static final int BLACK = 0;
+	public static final int BLUE = 1;
+	public static final int GRAY = 2;
+	public static final int GREEN = 3;
+	public static final int ORANGE = 4;
+	public static final int PURPLE = 5;
+	public static final int RED = 6;
+	public static final int WHITE = 7;
+	public static final int YELLOW = 8;
 
-    /**
-     * Returns a preset style.
-     *
-     * @param styleType {@link Style}
-     *
-     * @return {@link Style}
-     */
-    public static Style getStyle(int styleType) {
+	public SuperToast.Animations animations = SuperToast.Animations.FADE;
+	public int background = getBackground(GRAY);
+	public int typefaceStyle = Typeface.NORMAL;
+	public int textColor = Color.WHITE;
+	public int dividerColor = Color.WHITE;
+	public int buttonTextColor = Color.LT;
+
+	/**
+	 * Returns a preset style.
+	 * 
+	 * @param styleType
+	 *            {@link Style}
+	 * 
+	 * @return {@link Style}
+	 */
+	public static Style getStyle(int styleType) {
+
+		final Style style = new Style();
 
-        final Style style = new Style();
-
-        switch (styleType) {
+		switch (styleType) {
+
+		case BLACK:
 
-            case BLACK:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(BLACK);
+			style.dividerColor = Color.WHITE;
+			return style;
+
+		case WHITE:
+
+			style.textColor = Color.DKGRAY;
+			style.background = getBackground(WHITE);
+			style.dividerColor = Color.DKGRAY;
+			style.buttonTextColor = Color.GRAY;
+			return style;
+
+		case GRAY:
+
+			style.textColor = Color.WHITE;
+			style.background = getBackground(GRAY);
+			style.dividerColor = Color.WHITE;
+			style.buttonTextColor = Color.GRAY;
+			return style;
+
+		case PURPLE:
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(BLACK);
-                style.dividerColor = Color.WHITE;
-                return style;
-
-            case WHITE:
-
-                style.textColor = Color.DKGRAY;
-                style.background = getBackground(WHITE);
-                style.dividerColor = Color.DKGRAY;
-                style.buttonTextColor = Color.GRAY;
-                return style;
+			style.textColor = Color.WHITE;
+			style.background = getBackground(PURPLE);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-            case GRAY:
+		case RED:
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(GRAY);
-                style.dividerColor = Color.WHITE;
-                style.buttonTextColor = Color.GRAY;
-                return style;
+			style.textColor = Color.WHITE;
+			style.background = getBackground(RED);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-            case PURPLE:
+		case ORANGE:
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(PURPLE);
-                style.dividerColor = Color.WHITE;
-                return style;
+			style.textColor = Color.WHITE;
+			style.background = getBackground(ORANGE);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-            case RED:
+		case BLUE:
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(RED);
-                style.dividerColor = Color.WHITE;
-                return style;
+			style.textColor = Color.WHITE;
+			style.background = getBackground(BLUE);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-            case ORANGE:
+		case GREEN:
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(ORANGE);
-                style.dividerColor = Color.WHITE;
-                return style;
+			style.textColor = Color.WHITE;
+			style.background = getBackground(GREEN);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-            case BLUE:
+		case YELLOW:
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(BLUE);
-                style.dividerColor = Color.WHITE;
-                return style;
+			style.textColor = Color.WHITE;
+			style.background = getBackground(YELLOW);
+			style.dividerColor = Color.WHITE;
 
-            case GREEN:
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(GREEN);
-                style.dividerColor = Color.WHITE;
-                return style;
+		default:
 
-            default:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(GRAY);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(GRAY);
-                style.dividerColor = Color.WHITE;
-                return style;
+		}
 
-        }
+	}
 
-    }
+	/**
+	 * Returns a preset style with specified animations.
+	 * 
+	 * @param styleType
+	 *            {@link Style}
+	 * @param animations
+	 *            {@link com.github.johnpersano.supertoasts.SuperToast.Animations}
+	 * 
+	 * @return {@link Style}
+	 */
+	public static Style getStyle(int styleType, SuperToast.Animations animations) {
 
-    /**
-     * Returns a preset style with specified animations.
-     *
-     * @param styleType {@link Style}
-     * @param animations {@link com.github.johnpersano.supertoasts.SuperToast.Animations}
-     *
-     * @return {@link Style}
-     */
-    public static Style getStyle(int styleType, SuperToast.Animations animations) {
+		final Style style = new Style();
+		style.animations = animations;
 
-        final Style style = new Style();
-        style.animations = animations;
+		switch (styleType) {
 
-        switch (styleType) {
+		case BLACK:
 
-            case BLACK:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(BLACK);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(BLACK);
-                style.dividerColor = Color.WHITE;
-                return style;
+		case WHITE:
 
-            case WHITE:
+			style.textColor = Color.DKGRAY;
+			style.background = getBackground(WHITE);
+			style.dividerColor = Color.DKGRAY;
+			style.buttonTextColor = Color.GRAY;
+			return style;
 
-                style.textColor = Color.DKGRAY;
-                style.background = getBackground(WHITE);
-                style.dividerColor = Color.DKGRAY;
-                style.buttonTextColor = Color.GRAY;
-                return style;
+		case GRAY:
 
-            case GRAY:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(GRAY);
+			style.dividerColor = Color.WHITE;
+			style.buttonTextColor = Color.GRAY;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(GRAY);
-                style.dividerColor = Color.WHITE;
-                style.buttonTextColor = Color.GRAY;
-                return style;
+		case PURPLE:
 
-            case PURPLE:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(PURPLE);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(PURPLE);
-                style.dividerColor = Color.WHITE;
-                return style;
+		case RED:
 
-            case RED:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(RED);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(RED);
-                style.dividerColor = Color.WHITE;
-                return style;
+		case ORANGE:
 
-            case ORANGE:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(ORANGE);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(ORANGE);
-                style.dividerColor = Color.WHITE;
-                return style;
+		case BLUE:
 
-            case BLUE:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(BLUE);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(BLUE);
-                style.dividerColor = Color.WHITE;
-                return style;
+		case GREEN:
 
-            case GREEN:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(GREEN);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(GREEN);
-                style.dividerColor = Color.WHITE;
-                return style;
+		case YELLOW:
 
-            default:
+			style.textColor = Color.WHITE;
+			style.background = getBackground(YELLOW);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-                style.textColor = Color.WHITE;
-                style.background = getBackground(GRAY);
-                style.dividerColor = Color.WHITE;
-                return style;
+		default:
 
-        }
+			style.textColor = Color.WHITE;
+			style.background = getBackground(GRAY);
+			style.dividerColor = Color.WHITE;
+			return style;
 
-    }
+		}
 
-    public static int getBackground(int style) {
+	}
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+	public static int getBackground(int style) {
 
-            switch (style) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
-                case BLACK:
+			switch (style) {
 
-                    return (R.drawable.background_kitkat_black);
+			case BLACK:
 
-                case WHITE:
+				return (R.drawable.background_kitkat_black);
 
-                    return (R.drawable.background_kitkat_white);
+			case WHITE:
 
-                case GRAY:
+				return (R.drawable.background_kitkat_white);
 
-                    return (R.drawable.background_kitkat_gray);
+			case GRAY:
 
-                case PURPLE:
+				return (R.drawable.background_kitkat_gray);
 
-                    return (R.drawable.background_kitkat_purple);
+			case PURPLE:
 
-                case RED:
+				return (R.drawable.background_kitkat_purple);
 
-                    return (R.drawable.background_kitkat_red);
+			case RED:
 
-                case ORANGE:
+				return (R.drawable.background_kitkat_red);
 
-                    return (R.drawable.background_kitkat_orange);
+			case ORANGE:
 
-                case BLUE:
+				return (R.drawable.background_kitkat_orange);
 
-                    return (R.drawable.background_kitkat_blue);
+			case BLUE:
 
-                case GREEN:
+				return (R.drawable.background_kitkat_blue);
 
-                    return (R.drawable.background_kitkat_green);
+			case GREEN:
 
-                default:
+				return (R.drawable.background_kitkat_green);
 
-                    return (R.drawable.background_kitkat_gray);
+			case YELLOW:
 
-            }
+				return (R.drawable.background_kitkat_yellow);
 
-        } else {
+			default:
 
-            switch (style) {
+				return (R.drawable.background_kitkat_gray);
 
-                case BLACK:
+			}
 
-                    return (R.drawable.background_standard_black);
+		} else {
 
-                case WHITE:
+			switch (style) {
 
-                    return (R.drawable.background_standard_white);
+			case BLACK:
 
-                case GRAY:
+				return (R.drawable.background_standard_black);
 
-                    return (R.drawable.background_standard_gray);
+			case WHITE:
 
-                case PURPLE:
+				return (R.drawable.background_standard_white);
 
-                    return (R.drawable.background_standard_purple);
+			case GRAY:
 
-                case RED:
+				return (R.drawable.background_standard_gray);
 
-                    return (R.drawable.background_standard_red);
+			case PURPLE:
 
-                case ORANGE:
+				return (R.drawable.background_standard_purple);
 
-                    return (R.drawable.background_standard_orange);
+			case RED:
 
-                case BLUE:
+				return (R.drawable.background_standard_red);
 
-                    return (R.drawable.background_standard_blue);
+			case ORANGE:
 
-                case GREEN:
+				return (R.drawable.background_standard_orange);
 
-                    return (R.drawable.background_standard_green);
+			case BLUE:
 
-                default:
+				return (R.drawable.background_standard_blue);
 
-                    return (R.drawable.background_standard_gray);
+			case GREEN:
 
-            }
+				return (R.drawable.background_standard_green);
 
-        }
+			case YELLOW:
 
-    }
+				return (R.drawable.background_standard_yellow);
+
+			default:
+
+				return (R.drawable.background_standard_gray);
+
+			}
+
+		}
+
+	}
 
 }
